@@ -1,0 +1,10 @@
+янв. 28, 2023 10:20:30 PM Sem2.Task1 main
+WARNING: java.util.InputMismatchException: Value out of range. Value:"200" Radix:10
+янв. 28, 2023 10:20:50 PM Sem2.Task1 main
+WARNING: java.util.InputMismatchException
+янв. 28, 2023 10:20:58 PM Sem2.Task1 main
+WARNING: java.util.InputMismatchException: Value out of range. Value:"128" Radix:10
+янв. 28, 2023 10:21:16 PM Sem2.Task1 main
+WARNING: java.util.InputMismatchException: Value out of range. Value:"-129" Radix:10
+янв. 29, 2023 3:35:11 AM Sem2.Task1 main
+WARNING: java.util.InputMismatchException: Value out of range. Value:"333" Radix:10
