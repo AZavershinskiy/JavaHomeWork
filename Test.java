@@ -1,45 +1,49 @@
-import java.io.IOException;
-import java.util.logging.*;
-
-// import java.util.ArrayList;
-// import java.util.Arrays;
-// import java.util.List;
+import java.util.Stack;
 
 public class Test {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        Logger logger = Logger.getLogger(Test.class.getName());
-        FileHandler fh = new FileHandler("test_logs.log", true);
-        logger.addHandler(fh);
+        // var exp = "1 2 + 3 *".split(" ");
+        var exp = "20 30 - 10 *".split(" ");
+        // var exp = "1 2 3 * +".split(" ");
+        int res = 0;
 
-        SimpleFormatter sFormat = new SimpleFormatter();
-        fh.setFormatter(sFormat);
-
-        logger.log(Level.WARNING, "Error 1");
-        logger.info("Error 2\n");
-
-        /* 
-        List<String> list = new ArrayList<>(Arrays.asList("a", "2a", "b", "3", "c", "4"));
-        printResultOfCheck(list);
-    }
-
-    public static void printResultOfCheck(List<String> list) {
-        for (String item : list) {
-            if (isDigit(item)) {
-                System.out.println(item + " is digit.");
-            } else
-                System.out.println(item + " is String.");
+        Stack<Integer> st = new Stack<>();
+        for (int i = 0; i < exp.length; i++) {
+            if (isDigit(exp[i])) {
+                st.push(Integer.parseInt(exp[i]));
+            } else {
+                switch (exp[i]) {
+                    case "+":
+                        res = st.pop() + st.pop();
+                        st.push(res);
+                        break;
+                    case "-":
+                        res = -st.pop() + st.pop();
+                        st.push(res);
+                        break;
+                    case "*":
+                        res = st.pop() * st.pop();
+                        st.push(res);
+                        break;
+                    case "/":
+                        res = st.pop() / st.pop();
+                        st.push(res);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
+        System.out.printf("%d\n", st.pop());
     }
 
-    public static boolean isDigit(String str) {
+    private static boolean isDigit(String s) throws NumberFormatException {
         try {
-            Integer.parseInt(str);
+            Integer.parseInt(s);
             return true;
         } catch (NumberFormatException e) {
             return false;
         }
-         */
     }
-
 }
