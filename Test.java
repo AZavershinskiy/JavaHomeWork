@@ -1,49 +1,17 @@
-import java.util.Stack;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Test {
     public static void main(String[] args) {
 
-        // var exp = "1 2 + 3 *".split(" ");
-        var exp = "20 30 - 10 *".split(" ");
-        // var exp = "1 2 3 * +".split(" ");
-        int res = 0;
+        Map<Integer, String> db = new HashMap<>();
+        db.putIfAbsent(1, "один");
+        db.put(2, "два");
+        db.put(3, "три");
+        System.out.println(db);
 
-        Stack<Integer> st = new Stack<>();
-        for (int i = 0; i < exp.length; i++) {
-            if (isDigit(exp[i])) {
-                st.push(Integer.parseInt(exp[i]));
-            } else {
-                switch (exp[i]) {
-                    case "+":
-                        res = st.pop() + st.pop();
-                        st.push(res);
-                        break;
-                    case "-":
-                        res = -st.pop() + st.pop();
-                        st.push(res);
-                        break;
-                    case "*":
-                        res = st.pop() * st.pop();
-                        st.push(res);
-                        break;
-                    case "/":
-                        res = st.pop() / st.pop();
-                        st.push(res);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-        System.out.printf("%d\n", st.pop());
-    }
-
-    private static boolean isDigit(String s) throws NumberFormatException {
-        try {
-            Integer.parseInt(s);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
+        for (var item : db.entrySet()) {
+            System.out.printf("[%d: %s]\n", item.getKey(), item.getValue());
         }
     }
 }
